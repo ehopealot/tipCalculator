@@ -15,7 +15,7 @@
         android:hint="Enter Tip Amount"/>
     
     <RadioGroup 
-        android:id="@+id/rgTipAmonunts"
+        android:id="@+id/rgTipAmounts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -46,6 +46,7 @@
     </RadioGroup>
     
     <TextView
+        android:layout_below="@+id/rgTipAmounts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvTipAmountIs"/>

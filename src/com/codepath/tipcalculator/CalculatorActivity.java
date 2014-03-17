@@ -19,7 +19,7 @@ public class CalculatorActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-        mTipTextView = (TextView) findViewById(R.id.etTotal);
+        mTipTextView = (TextView) findViewById(R.id.tvTipAmountIs);
         mTipAmount = .15;
         mCheckAmount = (EditText) findViewById(R.id.etTotal);
         mCheckAmount.addTextChangedListener(new TextWatcher() {
@@ -39,15 +39,19 @@ public class CalculatorActivity extends Activity {
             @Override
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
-                double d;
-                try {
-                    d = Double.parseDouble(s.toString());
-                    mTipTextView.setText("Tip amount is: " + d * mTipAmount);
-                } catch (NumberFormatException e) {
-                    mTipTextView.setText("");
-                }
+                updateTipAmount();
             }
         });
+    }
+
+    private void updateTipAmount() {
+        double d;
+        try {
+            d = Double.valueOf(mCheckAmount.getText().toString());
+            mTipTextView.setText("Tip amount is: " + String.format("%.2f", d * mTipAmount));
+        } catch (NumberFormatException e) {
+            mTipTextView.setText("");
+        }
     }
 
     @Override
@@ -65,6 +69,7 @@ public class CalculatorActivity extends Activity {
         } else {
             mTipAmount = .2;
         }
+        updateTipAmount();
     }
 
 }
