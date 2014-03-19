@@ -48,7 +48,7 @@ public class CalculatorActivity extends Activity {
         double d;
         try {
             d = Double.valueOf(mCheckAmount.getText().toString());
-            mTipTextView.setText("Tip amount is: " + String.format("%.2f", d * mTipAmount));
+            mTipTextView.setText("Tip amount is: $" + String.format("%.2f", d * mTipAmount));
         } catch (NumberFormatException e) {
             mTipTextView.setText("");
         }
